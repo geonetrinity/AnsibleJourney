@@ -1,10 +1,12 @@
+[control]
+ubuntu-c ansible_connection=local
+
 [Ubuntu]
-ubuntu1
-ubuntu2
-ubuntu3
+ubuntu[1:3]
 
 [Centos]
-centos1 ansible_user=root
-centos2
-centos3
+centos[1:3]
+
+[all:vars]
+ansible_user=root
 

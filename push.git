@@ -1,0 +1,4 @@
+#!/bin/bash
+git add /home/ansible/AnsibleJourney
+git commit -m "$0"
+git push
