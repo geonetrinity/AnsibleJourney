@@ -1,0 +1,28 @@
+---: Ansible Journey :---
+
+- list hosts
+# ansible all --list-host
+# ansible Centos --list-host
+
+- one liner ping
+# ansible Centos -m ping -o
+
+- wild characters
+# ansible ~.*3 -m ping -o
+ubuntu3 | SUCCESS => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"},"changed": false,"ping": "pong"}
+centos3 | SUCCESS => {"ansible_facts": {"discovered_interpreter_python": "/usr/libexec/platform-python"},"changed": false,"ping": "pong"}
+
+- adhoc become root, but your define the hosts to use root
+# 	ansible Centos  -b -m command -a 'id'
+
+[Centos]
+centos1 ansible_user=root
+centos2 ansible_user=root
+centos3 ansible_user=root
+
+or 
+
+[Centos]
+centos1 ansible_become=true ansible_become_pass=password 
+centos2 ansible_become=true ansible_become_pass=password
+centos3 ansible_become=true ansible_become_pass=password
