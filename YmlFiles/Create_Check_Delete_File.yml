@@ -1,0 +1,23 @@
+---
+ - name: "Validate if a file is present or not present using Ansible Command module"
+   hosts: Srv1
+   tasks:
+    - name: "Create a file if it does not exist"
+      command: "touch /tmp/latestfile"
+      args:
+         creates: "/tmp/latestfile"
+      register: createif
+
+    - name: "Display the file to make sure its created"
+      command: "ls -lrt /tmp/latestfile"
+      register: displayif
+      when: createif is changed
+
+    - debug: var=displayif.stdout
+
+    - name: "Remove the file if it exist"
+      command: "rm -rf /tmp/latestfile"
+      args:
+         removes: "/tmp/latestfile"
+      register: removeif
+
