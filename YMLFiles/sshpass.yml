@@ -1,0 +1,10 @@
+---
+- name: Ansible apt module example
+  hosts: all
+  remote_user: root   # Using Remote user as ubuntu
+  become: true
+  tasks:
+    - name: Install apache httpd  (state=present is optional)
+      apt:
+        name: sshpass
+        state: absent
