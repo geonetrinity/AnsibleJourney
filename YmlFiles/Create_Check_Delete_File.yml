@@ -15,9 +15,19 @@
 
     - debug: var=displayif.stdout
 
-    - name: "Remove the file if it exist"
-      command: "rm -rf /tmp/latestfile"
-      args:
-         removes: "/tmp/latestfile"
-      register: removeif
+    - name: create multiple files
+      copy:
+        dest: "/tmp/{{ item }}"
+        content: |
+          It is sample file
+      with_items:
+        - Test1.txt
+        - Test2.txt
+        - Test3.txt
+
+#   - name: "Remove the file if it exist"
+#      command: "rm -rf /tmp/latestfile"
+#      args:
+#         removes: "/tmp/latestfile"
+#      register: removeif
 

@@ -1,0 +1,9 @@
+---
+ - name: Ansible archive Examples
+   hosts: Srv1
+   tasks:
+    - name: Compress the file and remove
+      archive:
+        path: /tmp/
+        dest: /tmp/Sample_Compressed.tar.gz
+        #remove: yes
