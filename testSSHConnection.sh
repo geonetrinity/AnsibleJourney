@@ -1,5 +1,5 @@
 #!/bin/bash
-for user in ansible root
+for user in root
 do
  for os in ubuntu centos
  do
@@ -12,7 +12,7 @@ do
        echo ""
     else
        echo "--- ${user}@${os}${instance}"
-       sudo ssh ${user}@${os}${instance} "uname -n ; uptime"
+       sudo ssh ${user}@${os}${instance} "uname -n ; uptime;  sudo -U ansible -l"
        echo ""
     fi
   done

@@ -1,5 +1,10 @@
-[Deb]
+[Ubuntu]
 ubuntu1
 ubuntu2
 ubuntu3
+
+[Centos]
+centos1 ansible_user=root
+centos2
+centos3
 
