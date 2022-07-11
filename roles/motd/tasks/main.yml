@@ -1,0 +1,20 @@
+---
+# tasks file for motd
+- name: copy motd file of UBUNTU
+  template:
+     src: Ubuntu.motd.j2
+     dest: /etc/motd
+     owner: root
+     group: root
+     mode: 0444
+  when: ansible_distribution == 'Ubuntu'
+
+
+- name: copy motd file of CENTOS/REDHAT
+  template:
+     src: Centos.motd.j2
+     dest: /etc/motd
+     owner: root
+     group: root
+     mode: 0444
+  when: ansible_distribution == 'CentOS'

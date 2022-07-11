@@ -1,0 +1,4 @@
+---
+# handlers file for sshebableMODT
+- name: restart sshd
+  service: name=sshd state=restarted
