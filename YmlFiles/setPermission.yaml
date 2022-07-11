@@ -1,0 +1,18 @@
+---
+- name: Change SUDO Permission
+  hosts: Srv1
+  
+  tasks:
+  - name: Change file ownership, group and permissions
+    ansible.builtin.file:
+      path: /etc/sudoers.d/AnsibleSUDO
+      owner: root
+      group: root
+      mode: '0440'
+
+  - name: Check Permission
+    register: displaypermission
+    command: "ls -l /etc/sudoers.d/AnsibleSUDO"
+
+  - debug:
+      var: displaypermission.stdout_lines

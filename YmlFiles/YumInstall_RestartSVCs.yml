@@ -1,0 +1,48 @@
+---
+#
+# This is just for testing purposes
+#
+- hosts: centos1
+  tasks:
+  - name: Install SQLite Package
+    yum:
+      state: present
+      name:
+        - sqlite
+
+  - name: TEST config file modify port
+    lineinfile:
+      path: /tmp/sshd_config
+      regexp: '^Port 22'
+      line: '#Port 22'
+    notify:
+       - restart testconfig
+
+  - name: Make sure group wheel is not in the sudoers configuration
+    ansible.builtin.lineinfile:
+      path: /tmp/sshd_config
+      state: absent
+      regexp: '^%wheel'
+
+  - name: Ensure SELinux is set to enforcing mode
+    ansible.builtin.lineinfile:
+      path: /tmp/sshd_config
+      regexp: '^SELINUX='
+      line: SELINUX=enforcing
+    notify:
+       - restart testconfig
+
+  - name: Validate the sudoers file before saving
+    ansible.builtin.lineinfile:
+      path: /tmp/sshd_config
+      state: present
+      regexp: '^%root ALL='
+      line: '%root ALL=(ALL) NOPASSWD: ALL'
+      #validate: /usr/sbin/visudo -cf %s
+
+
+  handlers:           
+    - name: restart testconfig
+      service: 
+        name: healthcheck.service
+        state: restarted
