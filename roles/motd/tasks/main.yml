@@ -8,9 +8,9 @@
   when: ansible_distribution == 'Ubuntu'
 
 
-- name: copy motd file of CENTOS/REDHAT
-  template:
-     src: roles/motd/templates/Centos.motd.j2
-     dest: /etc/motd
-     mode: 0444
-  when: ansible_distribution == 'CentOS'
+#- name: copy motd file of CENTOS/REDHAT
+#  template:
+#     src: roles/motd/templates/Centos.motd.j2
+#     dest: /etc/motd
+#     mode: 0444
+ # when: ansible_distribution == 'CentOS'
