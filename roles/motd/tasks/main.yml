@@ -2,7 +2,7 @@
 # tasks file for motd
 - name: copy motd file of UBUNTU
   template:
-     src: Ubuntu.motd.j2
+     src: templates/Ubuntu.motd.j2
      dest: /etc/motd
      owner: root
      group: root
