@@ -4,8 +4,6 @@
   template:
      src: roles/motd/templates/Ubuntu.motd.j2
      dest: /tmp/motd
-     owner: root
-     group: root
      mode: 0444
   when: ansible_distribution == 'Ubuntu'
 
