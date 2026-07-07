@@ -3,5 +3,4 @@
   hosts: all
 
   roles:
-    - role: motd
-      #system_manager: admin@golinuxcloud.com
+    - { role: motd }
