@@ -3,7 +3,7 @@
 - name: copy motd file of UBUNTU
   template:
      src: roles/motd/templates/Ubuntu.motd.j2
-     dest: /etc/motd
+     dest: /tmp/motd
      owner: root
      group: root
      mode: 0444
