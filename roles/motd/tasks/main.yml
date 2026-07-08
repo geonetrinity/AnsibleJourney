@@ -3,8 +3,9 @@
 - name: copy motd file of UBUNTU
   template:
      src: roles/motd/templates/Ubuntu.motd.j2
-     dest: /tmp/motd
+     dest: /etc/motd
      mode: 0444
+  become: true
   when: ansible_distribution == 'Ubuntu'
 
 
