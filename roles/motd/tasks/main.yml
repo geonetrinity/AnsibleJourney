@@ -5,7 +5,6 @@
      src: roles/motd/templates/Ubuntu.motd.j2
      dest: /etc/motd
      mode: 0444
-  become: true
   when: ansible_distribution == 'Ubuntu'
 
 
