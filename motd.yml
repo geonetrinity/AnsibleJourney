@@ -1,5 +1,6 @@
 ---
 - name: use motd role playbook
+  become: true
   hosts: all
 
   roles:
